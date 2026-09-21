@@ -2,16 +2,11 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>北陸 X SEARCH</title>
 
 <style>
-
 * {
   box-sizing: border-box;
 }
@@ -31,21 +26,20 @@ body {
 
 .header {
   background: linear-gradient(135deg, #111827, #26364f);
-  color: #fff;
-  padding: 26px 15px 22px;
+  color: white;
+  padding: 25px 15px 22px;
   text-align: center;
 }
 
 .header h1 {
   margin: 0;
   font-size: 25px;
-  letter-spacing: 1px;
 }
 
 .header p {
   margin: 7px 0 0;
   font-size: 12px;
-  opacity: 0.8;
+  opacity: .8;
 }
 
 .container {
@@ -55,11 +49,11 @@ body {
 }
 
 .card {
-  background: #fff;
+  background: white;
   border-radius: 16px;
   padding: 17px 14px;
   margin-bottom: 13px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 3px 15px rgba(0,0,0,.05);
 }
 
 .card-title {
@@ -99,11 +93,8 @@ body {
 .option input:checked + label {
   background: #111827;
   border-color: #111827;
-  color: #fff;
+  color: white;
 }
-
-
-/* 検索カテゴリ */
 
 .category {
   position: relative;
@@ -149,11 +140,8 @@ body {
 .category input:checked + label::before {
   content: "✓";
   background: #2563eb;
-  color: #fff;
+  color: white;
 }
-
-
-/* 入力 */
 
 select,
 input[type="text"] {
@@ -162,14 +150,8 @@ input[type="text"] {
   padding: 0 12px;
   border: 2px solid #e1e6ed;
   border-radius: 11px;
-  background: #fff;
+  background: white;
   font-size: 15px;
-  outline: none;
-}
-
-select:focus,
-input[type="text"]:focus {
-  border-color: #2563eb;
 }
 
 .field-label {
@@ -186,74 +168,65 @@ input[type="text"]:focus {
   margin-top: 9px;
 }
 
-
-/* 検索式 */
-
 .preview {
   background: #f7f9fc;
   border-radius: 10px;
-  padding: 11px;
-  color: #4b5563;
-  font-size: 11px;
-  line-height: 1.6;
+  padding: 12px;
+  color: #374151;
+  font-size: 12px;
+  line-height: 1.65;
   word-break: break-all;
+  min-height: 80px;
 }
 
-
-/* ボタン */
-
-.buttons {
-  position: sticky;
-  bottom: 0;
-  padding:
-    8px
-    0
-    max(10px, env(safe-area-inset-bottom));
-
-  background:
-    linear-gradient(
-      to top,
-      #f4f7fb 75%,
-      rgba(244,247,251,0)
-    );
-}
-
-.search-btn {
+.main-button {
   width: 100%;
-  min-height: 57px;
+  min-height: 56px;
+  border: 0;
   border-radius: 14px;
-  margin-top: 8px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  text-decoration: none;
+  margin-top: 9px;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.latest-btn {
+.copy-button {
+  background: #2563eb;
+  color: white;
+}
+
+.x-button {
   background: #111827;
-  color: #fff;
+  color: white;
 }
 
-.user-btn {
-  background: #1d9bf0;
-  color: #fff;
-}
-
-.reset-btn {
-  width: 100%;
-  height: 45px;
-  margin-top: 8px;
-
-  background: #fff;
-  border: 1px solid #dfe4eb;
-  border-radius: 12px;
-
-  font-size: 13px;
+.reset-button {
+  background: white;
   color: #555;
+  border: 1px solid #dfe4eb;
+  min-height: 45px;
+  font-size: 13px;
+}
+
+.status {
+  display: none;
+  margin-top: 10px;
+  padding: 11px;
+  border-radius: 10px;
+  background: #e8f7ec;
+  color: #177237;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.steps {
+  background: #fff8e6;
+  border: 1px solid #f0db9b;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.8;
 }
 
 .footer {
@@ -263,389 +236,218 @@ input[type="text"]:focus {
   line-height: 1.6;
   padding: 5px 20px 25px;
 }
-
 </style>
 </head>
 
-
 <body>
 
-
 <div class="header">
-
   <h1>北陸 X SEARCH</h1>
-
-  <p>
-    石川・富山・福井の公開投稿を検索
-  </p>
-
+  <p>石川・富山・福井の公開投稿を検索</p>
 </div>
-
 
 <div class="container">
 
+  <div class="card">
+    <div class="card-title">① 地域を選択</div>
 
-<!-- 地域 -->
+    <div class="grid">
 
-<div class="card">
+      <div class="option">
+        <input type="radio" name="area" id="ishikawa" value="ishikawa" checked>
+        <label for="ishikawa">石川・金沢</label>
+      </div>
 
-  <div class="card-title">
-    ① 地域を選択
-  </div>
+      <div class="option">
+        <input type="radio" name="area" id="toyama" value="toyama">
+        <label for="toyama">富山</label>
+      </div>
 
-  <div class="grid">
+      <div class="option">
+        <input type="radio" name="area" id="fukui" value="fukui">
+        <label for="fukui">福井</label>
+      </div>
 
-    <div class="option">
-      <input
-        type="radio"
-        name="area"
-        id="ishikawa"
-        value="ishikawa"
-        checked
-      >
-      <label for="ishikawa">
-        石川・金沢
-      </label>
+      <div class="option">
+        <input type="radio" name="area" id="hokuriku" value="hokuriku">
+        <label for="hokuriku">北陸全部</label>
+      </div>
+
     </div>
-
-    <div class="option">
-      <input
-        type="radio"
-        name="area"
-        id="toyama"
-        value="toyama"
-      >
-      <label for="toyama">
-        富山
-      </label>
-    </div>
-
-    <div class="option">
-      <input
-        type="radio"
-        name="area"
-        id="fukui"
-        value="fukui"
-      >
-      <label for="fukui">
-        福井
-      </label>
-    </div>
-
-    <div class="option">
-      <input
-        type="radio"
-        name="area"
-        id="hokuriku"
-        value="hokuriku"
-      >
-      <label for="hokuriku">
-        北陸全部
-      </label>
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- 検索内容 -->
-
-<div class="card">
-
-  <div class="card-title">
-    ② 探したい公開投稿
   </div>
 
 
-  <div class="category">
+  <div class="card">
+
+    <div class="card-title">② 探したい公開投稿</div>
+
+    <div class="category">
+      <input type="checkbox" id="job">
+      <label for="job">仕事・求人を探している</label>
+    </div>
+
+    <div class="category">
+      <input type="checkbox" id="move">
+      <label for="move">移籍・お店を変えたい</label>
+    </div>
+
+    <div class="category">
+      <input type="checkbox" id="beginner">
+      <label for="beginner">夜職・デリヘル未経験関連</label>
+    </div>
+
+    <div class="category">
+      <input type="checkbox" id="experienced">
+      <label for="experienced">夜職・デリヘル経験者関連</label>
+    </div>
+
+    <div class="category">
+      <input type="checkbox" id="ura">
+      <label for="ura">裏垢女子・裏垢の公開投稿</label>
+    </div>
+
+    <div class="note">
+      複数選択できます。本人が公開投稿で使っているキーワードを検索します。
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">③ 投稿期間</div>
+
+    <select id="period">
+      <option value="1">直近24時間</option>
+      <option value="3">直近3日</option>
+      <option value="7" selected>直近7日</option>
+      <option value="30">直近30日</option>
+      <option value="0">期間指定なし</option>
+    </select>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">④ 業者・広告系を除外</div>
+
+    <div class="grid">
+
+      <div class="option">
+        <input type="radio" name="exclude" id="excludeOff" value="off">
+        <label for="excludeOff">OFF</label>
+      </div>
+
+      <div class="option">
+        <input type="radio" name="exclude" id="excludeNormal" value="normal" checked>
+        <label for="excludeNormal">標準</label>
+      </div>
+
+      <div class="option">
+        <input type="radio" name="exclude" id="excludeStrong" value="strong">
+        <label for="excludeStrong">強め</label>
+      </div>
+
+    </div>
+
+    <div class="note">
+      スカウト・採用担当・求人広告などによく使われる文字を除外します。
+      完全に業者を除外できるわけではありません。
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">⑤ 追加条件</div>
+
+    <label class="field-label">追加検索ワード</label>
 
     <input
-      type="checkbox"
-      id="job"
+      type="text"
+      id="customKeyword"
+      placeholder="例：金沢駅"
     >
 
-    <label for="job">
-      仕事・求人を探している
-    </label>
-
-  </div>
-
-
-  <div class="category">
+    <label class="field-label">除外したいワード</label>
 
     <input
-      type="checkbox"
-      id="move"
+      type="text"
+      id="customExclude"
+      placeholder="例：投資 副業 メンズ"
     >
 
-    <label for="move">
-      移籍・お店を変えたい
-    </label>
-
-  </div>
-
-
-  <div class="category">
-
-    <input
-      type="checkbox"
-      id="beginner"
-    >
-
-    <label for="beginner">
-      夜職・デリヘル未経験関連
-    </label>
-
-  </div>
-
-
-  <div class="category">
-
-    <input
-      type="checkbox"
-      id="experienced"
-    >
-
-    <label for="experienced">
-      夜職・デリヘル経験者関連
-    </label>
-
-  </div>
-
-
-  <div class="category">
-
-    <input
-      type="checkbox"
-      id="ura"
-    >
-
-    <label for="ura">
-      裏垢女子・裏垢の公開投稿
-    </label>
-
-  </div>
-
-
-  <div class="note">
-    複数選択できます。
-  </div>
-
-</div>
-
-
-<!-- 期間 -->
-
-<div class="card">
-
-  <div class="card-title">
-    ③ 投稿期間
-  </div>
-
-  <select id="period">
-
-    <option value="1">
-      直近24時間
-    </option>
-
-    <option value="3">
-      直近3日
-    </option>
-
-    <option
-      value="7"
-      selected
-    >
-      直近7日
-    </option>
-
-    <option value="30">
-      直近30日
-    </option>
-
-    <option value="0">
-      期間指定なし
-    </option>
-
-  </select>
-
-</div>
-
-
-<!-- 業者除外 -->
-
-<div class="card">
-
-  <div class="card-title">
-    ④ 業者・広告アカウント除外
-  </div>
-
-
-  <div class="grid">
-
-    <div class="option">
-
-      <input
-        type="radio"
-        name="exclude"
-        id="excludeOff"
-        value="off"
-      >
-
-      <label for="excludeOff">
-        OFF
-      </label>
-
-    </div>
-
-
-    <div class="option">
-
-      <input
-        type="radio"
-        name="exclude"
-        id="excludeNormal"
-        value="normal"
-        checked
-      >
-
-      <label for="excludeNormal">
-        標準
-      </label>
-
-    </div>
-
-
-    <div class="option">
-
-      <input
-        type="radio"
-        name="exclude"
-        id="excludeStrong"
-        value="strong"
-      >
-
-      <label for="excludeStrong">
-        強め
-      </label>
-
+    <div class="note">
+      除外したい単語が複数ある場合はスペースで区切ってください。
     </div>
 
   </div>
 
 
-  <div class="note">
-    スカウト・求人業者・広告系によく使われる言葉を
-    X検索から除外します。
+  <div class="card">
+
+    <div class="card-title">⑥ 作成された検索文</div>
+
+    <div class="preview" id="preview"></div>
+
+    <button
+      type="button"
+      class="main-button copy-button"
+      id="copyButton"
+    >
+      検索文をコピー
+    </button>
+
+    <div class="status" id="copyStatus">
+      コピーしました
+    </div>
+
   </div>
 
-</div>
 
+  <div class="card">
 
-<!-- 自由入力 -->
+    <div class="card-title">⑦ Xで検索</div>
 
-<div class="card">
+    <div class="steps">
+      1. 「検索文をコピー」を押す<br>
+      2. 下の「Xの検索画面を開く」を押す<br>
+      3. Xの検索欄を長押し<br>
+      4. 「ペースト」を押す<br>
+      5. 検索する<br>
+      6. 「最新」または「ユーザー」を選ぶ
+    </div>
 
-  <div class="card-title">
-    ⑤ 追加条件
+    <button
+      type="button"
+      class="main-button x-button"
+      id="openXButton"
+    >
+      Xの検索画面を開く
+    </button>
+
+    <button
+      type="button"
+      class="main-button reset-button"
+      id="resetButton"
+    >
+      条件をリセット
+    </button>
+
   </div>
-
-
-  <label class="field-label">
-    追加検索ワード
-  </label>
-
-  <input
-    type="text"
-    id="customKeyword"
-    placeholder="例：金沢駅"
-  >
-
-
-  <label class="field-label">
-    除外したいワード
-  </label>
-
-  <input
-    type="text"
-    id="customExclude"
-    placeholder="例：投資 副業 メンズ"
-  >
-
-
-  <div class="note">
-    除外ワードはスペースで区切って入力できます。
-  </div>
-
-</div>
-
-
-<!-- プレビュー -->
-
-<div class="card">
-
-  <div class="card-title">
-    現在の検索条件
-  </div>
-
-  <div
-    class="preview"
-    id="preview"
-  >
-  </div>
-
-</div>
-
-
-<!-- 検索 -->
-
-<div class="buttons">
-
-  <a
-    id="latestLink"
-    class="search-btn latest-btn"
-    href="https://x.com/search"
-  >
-    Xで最新投稿を検索
-  </a>
-
-
-  <a
-    id="userLink"
-    class="search-btn user-btn"
-    href="https://x.com/search"
-  >
-    Xでアカウントを検索
-  </a>
-
-
-  <button
-    class="reset-btn"
-    id="resetButton"
-    type="button"
-  >
-    条件をリセット
-  </button>
-
-</div>
-
 
 </div>
 
 
 <div class="footer">
-
-このツールは公開されているX検索を開くための
-検索補助ツールです。
-
+  Xの公開検索を使うための検索補助ツールです。<br>
+  Xのログイン情報やアカウント情報は保存しません。
 </div>
 
 
 <script>
-
-
-/* 地域 */
 
 const areas = {
 
@@ -663,8 +465,6 @@ const areas = {
 
 };
 
-
-/* 検索内容 */
 
 const categories = {
 
@@ -686,8 +486,6 @@ const categories = {
 };
 
 
-/* 除外 */
-
 const excludeWords = {
 
   off:
@@ -697,12 +495,10 @@ const excludeWords = {
   '-スカウト -求人垢 -採用担当 -求人担当 -スタッフ募集 -公式',
 
   strong:
-  '-スカウト -求人垢 -求人募集 -採用担当 -求人担当 -スタッフ募集 -公式 -全国対応 -副業 -投資 -案件 -LINE追加 -紹介可能 -稼げます'
+  '-スカウト -求人垢 -求人募集 -採用担当 -求人担当 -スタッフ募集 -公式 -全国対応 -副業 -投資 -案件 -LINE追加 -紹介可能 -稼げます -高収入'
 
 };
 
-
-/* 日付作成 */
 
 function getDate(days) {
 
@@ -741,12 +537,9 @@ function getDate(days) {
 }
 
 
-/* 検索式作成 */
-
 function buildQuery() {
 
   let query = [];
-
 
   const area =
     document.querySelector(
@@ -762,31 +555,26 @@ function buildQuery() {
 
   let selected = [];
 
+  Object.keys(categories).forEach(
+    function(key) {
 
-  Object.keys(
-    categories
-  ).forEach(function(key) {
+      const item =
+        document.getElementById(key);
 
-    const item =
-      document.getElementById(key);
-
-    if (
-      item &&
-      item.checked
-    ) {
-
-      selected.push(
-        categories[key]
-      );
+      if (
+        item &&
+        item.checked
+      ) {
+        selected.push(
+          categories[key]
+        );
+      }
 
     }
+  );
 
-  });
 
-
-  if (
-    selected.length > 0
-  ) {
+  if (selected.length > 0) {
 
     query.push(
       '(' +
@@ -798,4 +586,38 @@ function buildQuery() {
 
 
   const customKeyword =
-    documen
+    document
+      .getElementById('customKeyword')
+      .value
+      .trim();
+
+  if (customKeyword) {
+    query.push(customKeyword);
+  }
+
+
+  const days =
+    parseInt(
+      document
+        .getElementById('period')
+        .value,
+      10
+    );
+
+
+  const date =
+    getDate(days);
+
+  if (date) {
+    query.push(date);
+  }
+
+
+  const exclude =
+    document.querySelector(
+      'input[name="exclude"]:checked'
+    );
+
+
+  if (
+    exc
