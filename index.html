@@ -2,11 +2,16 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
 <title>北陸 X SEARCH</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -25,48 +30,48 @@ body {
 }
 
 .header {
-  background: linear-gradient(135deg, #111827, #25344d);
-  color: white;
-  padding: 28px 18px 24px;
+  background: linear-gradient(135deg, #111827, #26364f);
+  color: #fff;
+  padding: 26px 15px 22px;
   text-align: center;
 }
 
 .header h1 {
   margin: 0;
-  font-size: 26px;
+  font-size: 25px;
   letter-spacing: 1px;
 }
 
 .header p {
-  margin: 8px 0 0;
-  font-size: 13px;
-  opacity: .8;
+  margin: 7px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 .container {
   max-width: 680px;
   margin: auto;
-  padding: 16px 14px 50px;
+  padding: 14px 13px 50px;
 }
 
 .card {
-  background: white;
-  margin-bottom: 14px;
-  padding: 18px 15px;
+  background: #fff;
   border-radius: 16px;
-  box-shadow: 0 3px 16px rgba(0,0,0,.05);
+  padding: 17px 14px;
+  margin-bottom: 13px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.05);
 }
 
 .card-title {
+  font-size: 16px;
   font-weight: bold;
-  font-size: 17px;
-  margin-bottom: 13px;
+  margin-bottom: 12px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 9px;
+  gap: 8px;
 }
 
 .option {
@@ -76,518 +81,721 @@ body {
 .option input {
   position: absolute;
   opacity: 0;
-  pointer-events: none;
 }
 
 .option label {
+  min-height: 47px;
+  border: 2px solid #e2e7ee;
+  border-radius: 11px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  min-height: 48px;
-  padding: 10px;
-  border: 2px solid #e1e6ee;
-  border-radius: 12px;
   font-size: 14px;
   font-weight: 600;
-  background: #fff;
-  cursor: pointer;
-  transition: .15s;
+  padding: 8px;
 }
 
 .option input:checked + label {
-  border-color: #111827;
   background: #111827;
-  color: white;
+  border-color: #111827;
+  color: #fff;
 }
 
-.search-category {
-  display: block;
-  margin-bottom: 10px;
+
+/* 検索カテゴリ */
+
+.category {
+  position: relative;
+  margin-bottom: 9px;
 }
 
-.search-category input {
-  display: none;
+.category input {
+  position: absolute;
+  opacity: 0;
 }
 
-.search-category label {
+.category label {
   display: flex;
   align-items: center;
-  padding: 13px 14px;
-  border: 2px solid #e5e9f0;
-  border-radius: 12px;
-  background: #fff;
-  cursor: pointer;
+  min-height: 51px;
+  padding: 10px 12px;
+  border: 2px solid #e3e8ef;
+  border-radius: 11px;
   font-size: 14px;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
-.search-category input:checked + label {
-  border-color: #2563eb;
-  background: #eef5ff;
-  color: #174db5;
-  font-weight: bold;
-}
-
-.search-category label::before {
+.category label::before {
   content: "＋";
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
   min-width: 27px;
   height: 27px;
-  margin-right: 10px;
   border-radius: 50%;
-  background: #edf1f6;
-  color: #333;
+  margin-right: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #edf1f5;
   font-weight: bold;
 }
 
-.search-category input:checked + label::before {
+.category input:checked + label {
+  border-color: #2563eb;
+  background: #edf5ff;
+  color: #174daf;
+  font-weight: bold;
+}
+
+.category input:checked + label::before {
   content: "✓";
   background: #2563eb;
-  color: white;
+  color: #fff;
 }
+
+
+/* 入力 */
 
 select,
 input[type="text"] {
   width: 100%;
-  height: 49px;
-  border: 2px solid #e1e6ee;
-  border-radius: 11px;
+  height: 48px;
   padding: 0 12px;
+  border: 2px solid #e1e6ed;
+  border-radius: 11px;
+  background: #fff;
   font-size: 15px;
-  background: white;
   outline: none;
 }
 
-input[type="text"]:focus,
-select:focus {
+select:focus,
+input[type="text"]:focus {
   border-color: #2563eb;
 }
 
 .field-label {
   display: block;
+  margin: 13px 0 7px;
   font-size: 13px;
   font-weight: bold;
-  margin: 13px 0 7px;
 }
 
 .note {
-  font-size: 12px;
-  line-height: 1.65;
   color: #687386;
-  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 9px;
 }
+
+
+/* 検索式 */
 
 .preview {
   background: #f7f9fc;
-  border-radius: 11px;
-  padding: 12px;
-  font-size: 12px;
-  line-height: 1.65;
-  word-break: break-all;
+  border-radius: 10px;
+  padding: 11px;
   color: #4b5563;
-  min-height: 65px;
+  font-size: 11px;
+  line-height: 1.6;
+  word-break: break-all;
 }
+
+
+/* ボタン */
 
 .buttons {
   position: sticky;
   bottom: 0;
-  padding: 11px 0 max(11px, env(safe-area-inset-bottom));
-  background: linear-gradient(
-    to top,
-    #f4f7fb 70%,
-    rgba(244,247,251,0)
-  );
+  padding:
+    8px
+    0
+    max(10px, env(safe-area-inset-bottom));
+
+  background:
+    linear-gradient(
+      to top,
+      #f4f7fb 75%,
+      rgba(244,247,251,0)
+    );
 }
 
 .search-btn {
   width: 100%;
-  border: 0;
+  min-height: 57px;
   border-radius: 14px;
-  min-height: 58px;
   margin-top: 8px;
-  font-size: 17px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  font-size: 16px;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .latest-btn {
   background: #111827;
-  color: white;
+  color: #fff;
 }
 
 .user-btn {
   background: #1d9bf0;
-  color: white;
+  color: #fff;
 }
 
 .reset-btn {
-  background: white;
-  color: #555;
-  border: 1px solid #dfe4ea;
-  min-height: 45px;
-  font-size: 14px;
-}
+  width: 100%;
+  height: 45px;
+  margin-top: 8px;
 
-.small-title {
-  margin-bottom: 6px;
-  font-size: 12px;
-  color: #64748b;
+  background: #fff;
+  border: 1px solid #dfe4eb;
+  border-radius: 12px;
+
+  font-size: 13px;
+  color: #555;
 }
 
 .footer {
   text-align: center;
-  font-size: 11px;
-  line-height: 1.7;
-  color: #8a94a4;
-  padding: 10px 20px 30px;
+  color: #9099a8;
+  font-size: 10px;
+  line-height: 1.6;
+  padding: 5px 20px 25px;
 }
 
-@media (max-width: 370px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
 </style>
 </head>
 
 
 <body>
 
+
 <div class="header">
+
   <h1>北陸 X SEARCH</h1>
-  <p>石川・富山・福井の公開投稿をすばやく検索</p>
+
+  <p>
+    石川・富山・福井の公開投稿を検索
+  </p>
+
 </div>
+
 
 <div class="container">
 
-  <!-- 地域 -->
-  <div class="card">
-    <div class="card-title">① 地域を選択</div>
 
-    <div class="grid">
+<!-- 地域 -->
 
-      <div class="option">
-        <input type="radio" name="area" id="ishikawa" value="ishikawa" checked>
-        <label for="ishikawa">石川・金沢</label>
-      </div>
+<div class="card">
 
-      <div class="option">
-        <input type="radio" name="area" id="toyama" value="toyama">
-        <label for="toyama">富山</label>
-      </div>
-
-      <div class="option">
-        <input type="radio" name="area" id="fukui" value="fukui">
-        <label for="fukui">福井</label>
-      </div>
-
-      <div class="option">
-        <input type="radio" name="area" id="hokuriku" value="hokuriku">
-        <label for="hokuriku">北陸全部</label>
-      </div>
-
-    </div>
+  <div class="card-title">
+    ① 地域を選択
   </div>
 
+  <div class="grid">
 
-  <!-- 検索内容 -->
-  <div class="card">
-
-    <div class="card-title">② 探したい公開投稿</div>
-
-    <div class="search-category">
-      <input type="checkbox" id="job">
-      <label for="job">
-        仕事・求人を探している
+    <div class="option">
+      <input
+        type="radio"
+        name="area"
+        id="ishikawa"
+        value="ishikawa"
+        checked
+      >
+      <label for="ishikawa">
+        石川・金沢
       </label>
     </div>
 
-    <div class="search-category">
-      <input type="checkbox" id="move">
-      <label for="move">
-        移籍・お店を変えたい
+    <div class="option">
+      <input
+        type="radio"
+        name="area"
+        id="toyama"
+        value="toyama"
+      >
+      <label for="toyama">
+        富山
       </label>
     </div>
 
-    <div class="search-category">
-      <input type="checkbox" id="beginner">
-      <label for="beginner">
-        夜職・デリヘル未経験関連
+    <div class="option">
+      <input
+        type="radio"
+        name="area"
+        id="fukui"
+        value="fukui"
+      >
+      <label for="fukui">
+        福井
       </label>
     </div>
 
-    <div class="search-category">
-      <input type="checkbox" id="experienced">
-      <label for="experienced">
-        夜職・デリヘル経験者関連
+    <div class="option">
+      <input
+        type="radio"
+        name="area"
+        id="hokuriku"
+        value="hokuriku"
+      >
+      <label for="hokuriku">
+        北陸全部
       </label>
-    </div>
-
-    <div class="search-category">
-      <input type="checkbox" id="ura">
-      <label for="ura">
-        裏垢女子・裏垢の公開投稿
-      </label>
-    </div>
-
-    <div class="note">
-      複数選択できます。選んだジャンルはOR条件として検索します。
     </div>
 
   </div>
 
+</div>
 
-  <!-- 期間 -->
-  <div class="card">
 
-    <div class="card-title">③ 投稿期間</div>
+<!-- 検索内容 -->
 
-    <select id="period">
-      <option value="1">直近24時間</option>
-      <option value="3">直近3日</option>
-      <option value="7" selected>直近7日</option>
-      <option value="30">直近30日</option>
-      <option value="0">期間指定なし</option>
-    </select>
+<div class="card">
 
+  <div class="card-title">
+    ② 探したい公開投稿
   </div>
 
 
-  <!-- 業者除外 -->
-  <div class="card">
-
-    <div class="card-title">④ 業者・広告アカウント除外</div>
-
-    <div class="grid">
-
-      <div class="option">
-        <input type="radio" name="excludeLevel" id="excludeOff" value="off">
-        <label for="excludeOff">OFF</label>
-      </div>
-
-      <div class="option">
-        <input type="radio" name="excludeLevel" id="excludeNormal" value="normal" checked>
-        <label for="excludeNormal">標準</label>
-      </div>
-
-      <div class="option">
-        <input type="radio" name="excludeLevel" id="excludeStrong" value="strong">
-        <label for="excludeStrong">強め</label>
-      </div>
-
-    </div>
-
-    <div class="note">
-      X検索の除外ワードを使って、求人業者・スカウト・広告投稿などをできるだけ減らします。
-      完全に除外できるわけではありません。
-    </div>
-
-  </div>
-
-
-  <!-- 追加設定 -->
-  <div class="card">
-
-    <div class="card-title">⑤ 追加条件</div>
-
-    <label class="field-label">
-      追加したい検索ワード
-    </label>
+  <div class="category">
 
     <input
-      type="text"
-      id="customKeyword"
-      placeholder="例：金沢駅、仕事探してる"
+      type="checkbox"
+      id="job"
     >
 
-    <div class="note">
-      複数入れる場合はスペースで区切ってください。
-    </div>
-
-
-    <label class="field-label">
-      除外したいワード
+    <label for="job">
+      仕事・求人を探している
     </label>
 
+  </div>
+
+
+  <div class="category">
+
     <input
-      type="text"
-      id="customExclude"
-      placeholder="例：副業 投資 メンズ"
+      type="checkbox"
+      id="move"
     >
+
+    <label for="move">
+      移籍・お店を変えたい
+    </label>
 
   </div>
 
 
-  <!-- 検索式 -->
-  <div class="card">
+  <div class="category">
 
-    <div class="card-title">現在の検索条件</div>
+    <input
+      type="checkbox"
+      id="beginner"
+    >
 
-    <div class="small-title">
-      Xに送る検索式
+    <label for="beginner">
+      夜職・デリヘル未経験関連
+    </label>
+
+  </div>
+
+
+  <div class="category">
+
+    <input
+      type="checkbox"
+      id="experienced"
+    >
+
+    <label for="experienced">
+      夜職・デリヘル経験者関連
+    </label>
+
+  </div>
+
+
+  <div class="category">
+
+    <input
+      type="checkbox"
+      id="ura"
+    >
+
+    <label for="ura">
+      裏垢女子・裏垢の公開投稿
+    </label>
+
+  </div>
+
+
+  <div class="note">
+    複数選択できます。
+  </div>
+
+</div>
+
+
+<!-- 期間 -->
+
+<div class="card">
+
+  <div class="card-title">
+    ③ 投稿期間
+  </div>
+
+  <select id="period">
+
+    <option value="1">
+      直近24時間
+    </option>
+
+    <option value="3">
+      直近3日
+    </option>
+
+    <option
+      value="7"
+      selected
+    >
+      直近7日
+    </option>
+
+    <option value="30">
+      直近30日
+    </option>
+
+    <option value="0">
+      期間指定なし
+    </option>
+
+  </select>
+
+</div>
+
+
+<!-- 業者除外 -->
+
+<div class="card">
+
+  <div class="card-title">
+    ④ 業者・広告アカウント除外
+  </div>
+
+
+  <div class="grid">
+
+    <div class="option">
+
+      <input
+        type="radio"
+        name="exclude"
+        id="excludeOff"
+        value="off"
+      >
+
+      <label for="excludeOff">
+        OFF
+      </label>
+
     </div>
 
-    <div class="preview" id="queryPreview">
-      条件を選択してください
+
+    <div class="option">
+
+      <input
+        type="radio"
+        name="exclude"
+        id="excludeNormal"
+        value="normal"
+        checked
+      >
+
+      <label for="excludeNormal">
+        標準
+      </label>
+
+    </div>
+
+
+    <div class="option">
+
+      <input
+        type="radio"
+        name="exclude"
+        id="excludeStrong"
+        value="strong"
+      >
+
+      <label for="excludeStrong">
+        強め
+      </label>
+
     </div>
 
   </div>
 
 
-  <!-- ボタン -->
-  <div class="buttons">
-
-    <button
-      class="search-btn latest-btn"
-      onclick="openXSearch('live')"
-    >
-      Xで最新投稿を検索
-    </button>
-
-    <button
-      class="search-btn user-btn"
-      onclick="openXSearch('user')"
-    >
-      Xでアカウントを検索
-    </button>
-
-    <button
-      class="search-btn reset-btn"
-      onclick="resetSearch()"
-    >
-      条件をリセット
-    </button>
-
+  <div class="note">
+    スカウト・求人業者・広告系によく使われる言葉を
+    X検索から除外します。
   </div>
+
+</div>
+
+
+<!-- 自由入力 -->
+
+<div class="card">
+
+  <div class="card-title">
+    ⑤ 追加条件
+  </div>
+
+
+  <label class="field-label">
+    追加検索ワード
+  </label>
+
+  <input
+    type="text"
+    id="customKeyword"
+    placeholder="例：金沢駅"
+  >
+
+
+  <label class="field-label">
+    除外したいワード
+  </label>
+
+  <input
+    type="text"
+    id="customExclude"
+    placeholder="例：投資 副業 メンズ"
+  >
+
+
+  <div class="note">
+    除外ワードはスペースで区切って入力できます。
+  </div>
+
+</div>
+
+
+<!-- プレビュー -->
+
+<div class="card">
+
+  <div class="card-title">
+    現在の検索条件
+  </div>
+
+  <div
+    class="preview"
+    id="preview"
+  >
+  </div>
+
+</div>
+
+
+<!-- 検索 -->
+
+<div class="buttons">
+
+  <a
+    id="latestLink"
+    class="search-btn latest-btn"
+    href="https://x.com/search"
+  >
+    Xで最新投稿を検索
+  </a>
+
+
+  <a
+    id="userLink"
+    class="search-btn user-btn"
+    href="https://x.com/search"
+  >
+    Xでアカウントを検索
+  </a>
+
+
+  <button
+    class="reset-btn"
+    id="resetButton"
+    type="button"
+  >
+    条件をリセット
+  </button>
+
+</div>
+
 
 </div>
 
 
 <div class="footer">
-  このツールはXの公開検索を開くための検索補助ツールです。<br>
-  XのAPIやログイン情報は保存しません。
+
+このツールは公開されているX検索を開くための
+検索補助ツールです。
+
 </div>
 
 
 <script>
 
-/* =========================
-   地域キーワード
-========================= */
 
-const areaQueries = {
+/* 地域 */
+
+const areas = {
 
   ishikawa:
-    '(金沢 OR 石川 OR 野々市 OR 白山 OR 小松 OR 加賀 OR 能美 OR 河北 OR 津幡)',
+  '(金沢 OR 石川 OR 野々市 OR 白山 OR 小松 OR 加賀 OR 能美 OR 津幡)',
 
   toyama:
-    '(富山 OR 高岡 OR 射水 OR 砺波 OR 南砺 OR 魚津 OR 黒部 OR 滑川)',
+  '(富山 OR 高岡 OR 射水 OR 砺波 OR 南砺 OR 魚津 OR 黒部 OR 滑川)',
 
   fukui:
-    '(福井 OR 坂井 OR 鯖江 OR 越前 OR 敦賀 OR 小浜 OR 大野 OR 勝山)',
+  '(福井 OR 坂井 OR 鯖江 OR 越前 OR 敦賀 OR 小浜 OR 大野 OR 勝山)',
 
   hokuriku:
-    '(北陸 OR 金沢 OR 石川 OR 野々市 OR 小松 OR 富山 OR 高岡 OR 福井 OR 坂井 OR 鯖江 OR 敦賀)'
+  '(北陸 OR 金沢 OR 石川 OR 野々市 OR 小松 OR 富山 OR 高岡 OR 福井 OR 坂井 OR 鯖江 OR 敦賀)'
 
 };
 
 
-/* =========================
-   検索カテゴリ
-========================= */
+/* 検索内容 */
 
-const categoryQueries = {
+const categories = {
 
   job:
-    '("仕事探してる" OR "仕事探し中" OR "求人探してる" OR "働く場所探してる" OR "仕事変えたい" OR "転職したい" OR "夜職探してる" OR "お店探してる")',
+  '("仕事探してる" OR "仕事探し中" OR "求人探してる" OR "仕事変えたい" OR "転職したい" OR "働く場所探してる" OR "夜職探してる" OR "お店探してる")',
 
   move:
-    '("移籍したい" OR "移籍考えてる" OR "移籍先" OR "お店変えたい" OR "店変えたい" OR "辞めようかな" OR "在籍変えたい")',
+  '("移籍したい" OR "移籍考えてる" OR "移籍先探してる" OR "お店変えたい" OR "店変えたい" OR "在籍変えたい")',
 
   beginner:
-    '("夜職未経験" OR "デリヘル未経験" OR "風俗未経験" OR "未経験だけど" OR "未経験です")',
+  '("夜職未経験" OR "デリヘル未経験" OR "風俗未経験")',
 
   experienced:
-    '("夜職経験" OR "デリヘル経験" OR "風俗経験" OR "元デリヘル" OR "在籍してた" OR "夜職してる")',
+  '("夜職経験" OR "デリヘル経験" OR "風俗経験" OR "元デリヘル" OR "在籍してた" OR "夜職してる")',
 
   ura:
-    '("裏垢女子" OR "#裏垢女子" OR "裏垢" OR "#裏垢")'
+  '("裏垢女子" OR "#裏垢女子" OR "裏垢")'
 
 };
 
 
-/* =========================
-   業者除外
-========================= */
+/* 除外 */
 
-const exclusions = {
+const excludeWords = {
 
   off:
-    '',
+  '',
 
   normal:
-    '-スカウト -求人垢 -採用担当 -求人担当 -スタッフ募集 -公式',
+  '-スカウト -求人垢 -採用担当 -求人担当 -スタッフ募集 -公式',
 
   strong:
-    '-スカウト -求人垢 -求人募集 -採用担当 -求人担当 -スタッフ募集 -公式 -高収入 -全国対応 -案件 -副業 -投資 -稼げます -LINE追加 -紹介可能 -紹介します -DMください'
+  '-スカウト -求人垢 -求人募集 -採用担当 -求人担当 -スタッフ募集 -公式 -全国対応 -副業 -投資 -案件 -LINE追加 -紹介可能 -稼げます'
 
 };
 
 
-/* =========================
-   日付
-========================= */
+/* 日付作成 */
 
-function getSinceDate(days) {
+function getDate(days) {
 
   if (days === 0) {
     return '';
   }
 
-  const date = new Date();
+  const d = new Date();
 
-  date.setDate(date.getDate() - days);
+  d.setDate(
+    d.getDate() - days
+  );
 
-  const year = date.getFullYear();
+  const year =
+    d.getFullYear();
 
   const month =
-    String(date.getMonth() + 1).padStart(2, '0');
+    String(
+      d.getMonth() + 1
+    ).padStart(2, '0');
 
   const day =
-    String(date.getDate()).padStart(2, '0');
+    String(
+      d.getDate()
+    ).padStart(2, '0');
 
-  return `since:${year}-${month}-${day}`;
+  return (
+    'since:' +
+    year +
+    '-' +
+    month +
+    '-' +
+    day
+  );
 
 }
 
 
-/* =========================
-   検索式作成
-========================= */
+/* 検索式作成 */
 
 function buildQuery() {
+
+  let query = [];
+
 
   const area =
     document.querySelector(
       'input[name="area"]:checked'
-    ).value;
+    );
+
+  if (area) {
+    query.push(
+      areas[area.value]
+    );
+  }
 
 
-  let parts = [];
-
-  parts.push(areaQueries[area]);
+  let selected = [];
 
 
-  /* カテゴリ */
+  Object.keys(
+    categories
+  ).forEach(function(key) {
 
-  let selectedCategories = [];
-
-  Object.keys(categoryQueries).forEach(key => {
-
-    const checkbox =
+    const item =
       document.getElementById(key);
 
-    if (checkbox && checkbox.checke
+    if (
+      item &&
+      item.checked
+    ) {
+
+      selected.push(
+        categories[key]
+      );
+
+    }
+
+  });
+
+
+  if (
+    selected.length > 0
+  ) {
+
+    query.push(
+      '(' +
+      selected.join(' OR ') +
+      ')'
+    );
+
+  }
+
+
+  const customKeyword =
+    documen
