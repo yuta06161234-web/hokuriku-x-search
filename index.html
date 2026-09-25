@@ -131,39 +131,59 @@
     </section>
 
     <section class="card">
-      <div class="title">② 探したい公開投稿</div>
+  <div class="title">② 探したい公開投稿</div>
 
-      <div class="category">
-        <input type="checkbox" id="job">
-        <label for="job">在籍先・仕事を探している</label>
-      </div>
+  <div class="category">
+    <input type="checkbox" id="ura">
+    <label for="ura">裏垢</label>
+  </div>
 
-      <div class="category">
-        <input type="checkbox" id="move">
-        <label for="move">移籍・お店を変えたい</label>
-      </div>
+  <div class="category">
+    <input type="checkbox" id="urajoshi">
+    <label for="urajoshi">裏垢女子</label>
+  </div>
 
-      <div class="category">
-        <input type="checkbox" id="beginner">
-        <label for="beginner">夜職・デリヘル未経験と明示</label>
-      </div>
+  <div class="category">
+    <input type="checkbox" id="kanazawa">
+    <label for="kanazawa">金沢</label>
+  </div>
 
-      <div class="category">
-        <input type="checkbox" id="experienced">
-        <label for="experienced">夜職・デリヘル経験者と明示</label>
-      </div>
+  <div class="category">
+    <input type="checkbox" id="toyama_kw">
+    <label for="toyama_kw">富山</label>
+  </div>
 
-      <div class="category">
-        <input type="checkbox" id="ura">
-        <label for="ura">「裏垢女子」「裏垢」と公開投稿に明示</label>
-      </div>
+  <div class="category">
+    <input type="checkbox" id="fukui_kw">
+    <label for="fukui_kw">福井</label>
+  </div>
 
-      <div class="sub">
-        本人が公開投稿で明示している言葉だけを検索対象にします。
-      </div>
-    </section>
+  <div class="category">
+    <input type="checkbox" id="ishikawa_kw">
+    <label for="ishikawa_kw">石川</label>
+  </div>
 
-    <section class="card">
+  <div class="category">
+    <input type="checkbox" id="hokuriku_kw">
+    <label for="hokuriku_kw">北陸</label>
+  </div>
+
+  <div class="category">
+    <input type="checkbox" id="nonoichi">
+    <label for="nonoichi">野々市</label>
+  </div>
+
+  <div class="category">
+    <input type="checkbox" id="hakusan">
+    <label for="hakusan">白山</label>
+  </div>
+
+  <div class="sub">
+    複数選択できます。
+  </div>
+</section>
+
+<section class="card">
       <div class="title">③ 投稿期間</div>
       <select id="period">
         <option value="1">直近24時間</option>
@@ -255,12 +275,16 @@
     };
 
     var categories = {
-      job: '("仕事探してる" OR "仕事探し中" OR "仕事変えたい" OR "転職したい" OR "夜職探してる" OR "お店探してる" OR "在籍先探してる")',
-      move: '("移籍したい" OR "移籍考えてる" OR "移籍先探してる" OR "お店変えたい" OR "店変えたい" OR "在籍変えたい")',
-      beginner: '("夜職未経験" OR "デリヘル未経験" OR "風俗未経験")',
-      experienced: '("夜職経験" OR "デリヘル経験" OR "風俗経験" OR "元デリヘル" OR "在籍してた" OR "夜職してる")',
-      ura: '("裏垢女子" OR "#裏垢女子" OR "裏垢")'
-    };
+  ura: '"裏垢"',
+  urajoshi: '"裏垢女子"',
+  kanazawa: '"金沢"',
+  toyama_kw: '"富山"',
+  fukui_kw: '"福井"',
+  ishikawa_kw: '"石川"',
+  hokuriku_kw: '"北陸"',
+  nonoichi: '"野々市"',
+  hakusan: '"白山"'
+};
 
     var excludes = {
       off: '',
@@ -302,7 +326,17 @@
       var parts = [];
       var areaKey = checkedValue('area');
       var selected = [];
-      var keys = ['job', 'move', 'beginner', 'experienced', 'ura'];
+      var keys = [
+  'ura',
+  'urajoshi',
+  'kanazawa',
+  'toyama_kw',
+  'fukui_kw',
+  'ishikawa_kw',
+  'hokuriku_kw',
+  'nonoichi',
+  'hakusan'
+];
       var i, key, days, custom, exLevel, customEx, words;
 
       if (areas[areaKey]) {
@@ -395,12 +429,15 @@
       byId('fukui').checked = false;
       byId('hokuriku').checked = false;
 
-      byId('job').checked = false;
-      byId('move').checked = false;
-      byId('beginner').checked = false;
-      byId('experienced').checked = false;
       byId('ura').checked = false;
-
+byId('urajoshi').checked = false;
+byId('kanazawa').checked = false;
+byId('toyama_kw').checked = false;
+byId('fukui_kw').checked = false;
+byId('ishikawa_kw').checked = false;
+byId('hokuriku_kw').checked = false;
+byId('nonoichi').checked = false;
+byId('hakusan').checked = false;
       byId('period').value = '7';
 
       byId('exOff').checked = false;
